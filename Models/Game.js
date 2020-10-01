@@ -16,7 +16,7 @@ const PlayerSchema = new mongoose.Schema({
 
 const GameSchema = new mongoose.Schema({
     cards : [{type : String}],
-    avatarsAvailable : [{type : String}],
+    availableAvatars : [{type : String}],
     isOpen : {type : Boolean, default : true},
     isOver : {type : Boolean, default : false},
     players : [PlayerSchema],
