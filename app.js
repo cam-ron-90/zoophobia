@@ -8,13 +8,20 @@ const io = socketio(expressServer);
 
 const Game = require('./Models/Game');
 
-const avatars = require('./avatars');
-
 mongoose.connect('mongodb://localhost:27017/zoophobia',
                 {useNewUrlParser : true, useUnifiedTopology : true},
                 ()=>{ console.log('successfully connected to database')});
 
 
+// ------ PROMPT CARDS -------
+// 1. create array of prompt cards for server
+// 2. shuffle array and push to Game.cards
+// 3. each turn you take the last card from Game.cards to display
+// 4. winning response player takes prompt card from Game.cards to Player.cards
+// 5. if any values match they get a point
+
+// ------- QUESTIONS ---------
+// 1. Should cards Object carry graphics for the card or is that keft to front end?
 
 io.on('connect',(socket)=>{
 
