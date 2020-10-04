@@ -5,18 +5,12 @@ const PlayerSchema = new mongoose.Schema({
     isPartyLeader : {type : Boolean, default : false},
     isCurrentPlayer : {type : Boolean, default : false},
     cards : [{type : String}],
-    microAgressions : [{type : String}],
     points : {type : Number, default : 0},
-    avatar : {
-        animal : {type : String},
-        power : {type : String}
-    },
     nickName : {type : String}
 });
 
 const GameSchema = new mongoose.Schema({
     cards : [{type : String}],
-    availableAvatars : [{type : String}],
     isOpen : {type : Boolean, default : true},
     isOver : {type : Boolean, default : false},
     players : [PlayerSchema],

@@ -39,7 +39,7 @@ io.on('connect',(socket)=>{
     //     }
     // });
 
-    socket.on('join-game',async ({gameID : _id,nickName, animal})=>{
+    socket.on('join-game',async ({gameID : _id,nickName})=>{
         try{
             let game = await Game.findById(_id);
             if(game.isOpen){
@@ -47,14 +47,8 @@ io.on('connect',(socket)=>{
                 socket.join(gameID);
                 let player = {
                     socketID : socket.id,
-                    avatar : {
-                        animal : animal,
-                        power : avatars[animal]
-                    },
                     nickName
                 }
-                let pos = game.availableAvatars.indexOf(animal);
-                game.availableAvatars.splice(pos, 1);
                 game.players.push(player);
                 game = await game.save();
                 io.to(gameID).emit('updateGame',game);
@@ -64,21 +58,15 @@ io.on('connect',(socket)=>{
         }
     })
 
-    socket.on('create-game',async (nickName, animal)=>{
+    socket.on('create-game',async (nickName)=>{
         try{
             let game = new Game();
             Object.keys(avatars).forEach(key => game.availableAvatars.push(key));
             let player = {
                 socketID : socket.id,
                 isPartyLeader : true,
-                avatar : {
-                    animal : animal,
-                    power : avatars[animal]
-                },
                 nickName
             }
-            let pos = game.availableAvatars.indexOf(animal);
-            game.availableAvatars.splice(pos, 1);
             game.players.push(player);
             game = await game.save();
             const gameID = game._id.toString();
