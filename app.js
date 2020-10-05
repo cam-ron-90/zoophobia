@@ -8,6 +8,8 @@ const io = socketio(expressServer);
 
 const Game = require('./Models/Game');
 
+const promptCards = require('./promptCards');
+
 mongoose.connect('mongodb://localhost:27017/zoophobia',
                 {useNewUrlParser : true, useUnifiedTopology : true},
                 ()=>{ console.log('successfully connected to database')});
@@ -68,7 +70,7 @@ io.on('connect',(socket)=>{
     socket.on('create-game',async (nickName)=>{
         try{
             let game = new Game();
-            Object.keys(avatars).forEach(key => game.availableAvatars.push(key));
+            Object.keys(promptCards).forEach(card => game.promptCards.push(promptCards[card]));
             let player = {
                 socketID : socket.id,
                 isPartyLeader : true,
