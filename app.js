@@ -70,7 +70,7 @@ io.on('connect',(socket)=>{
     socket.on('create-game',async (nickName)=>{
         try{
             let game = new Game();
-            Object.keys(promptCards).forEach(card => game.promptCards.push(promptCards[card]));
+            shuffleArray(promptCards).forEach( prompt => game.promptCards.push(prompt));
             let player = {
                 socketID : socket.id,
                 isPartyLeader : true,
@@ -117,3 +117,6 @@ io.on('connect',(socket)=>{
 //         return gameIntervalFunc;
 //     }(),1000);
 // }
+
+const shuffleArray = arr => arr.map(a => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map(a => a[1]);
+
