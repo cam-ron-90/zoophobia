@@ -4,7 +4,8 @@ const PlayerSchema = new mongoose.Schema({
     socketID : {type : String},
     isPartyLeader : {type : Boolean, default : false},
     isCurrentPlayer : {type : Boolean, default : false},
-    cards : {type : Array},
+    responseCards : {type : Array},
+    winningCards : {type : Array},
     points : {type : Number, default : 0},
     nickName : {type : String}
 });
