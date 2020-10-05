@@ -1,3 +1,109 @@
+const promptCards = [
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  },
+  {
+    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    item: 'apple',
+    colour: 'blue'
+  }
+]
+
+
+module.exports = promptCards;
+
 // const promptCards = {
 //   one: {
 //     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
@@ -100,23 +206,3 @@
 //     colour: 'blue'
 //   }
 // }
-
-const promptCards = [
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    colour: 'blue'
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    colour: 'green'
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    colour: 'red'
-  }
-]
-
-module.exports = promptCards;
