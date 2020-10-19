@@ -128,3 +128,14 @@ io.on('connect',(socket)=>{
 
 const shuffleArray = arr => arr.map(a => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map(a => a[1]);
 
+const dealCards = (cards, players) => {
+  if (cards.length > 0) {
+    players.forEach((player) => {
+      if (cards.length > 0) {
+        player.responseCards.push(cards[0]);
+        cards.shift();
+      }
+    });
+    dealCards(cards, players);
+  }
+}
