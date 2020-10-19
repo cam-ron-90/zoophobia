@@ -2,102 +2,122 @@ const promptCards = [
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   },
   {
     text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
     item: 'apple',
-    colour: 'blue'
+    frontImg: '',
+    backImg: ''
   }
 ]
 

@@ -10,6 +10,8 @@ const Game = require('./Models/Game');
 
 const promptCards = require('./promptCards');
 
+const responseCards = require('./responseCards');
+
 mongoose.connect('mongodb://localhost:27017/zoophobia',
                 {useNewUrlParser : true, useUnifiedTopology : true},
                 ()=>{ console.log('successfully connected to database')});
@@ -47,6 +49,12 @@ io.on('connect',(socket)=>{
     //         },1000);
     //     }
     // });
+
+
+
+    socket.on('deal-cards',async ({gameID : _id})=>{
+
+    })
 
     socket.on('join-game',async ({gameID : _id,nickName})=>{
         try{

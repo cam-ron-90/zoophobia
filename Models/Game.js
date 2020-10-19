@@ -6,6 +6,7 @@ const PlayerSchema = new mongoose.Schema({
     isCurrentPlayer : {type : Boolean, default : false},
     responseCards : {type : Array},
     winningCards : {type : Array},
+    unmatchCards : {type : Array},
     points : {type : Number, default : 0},
     nickName : {type : String}
 });
