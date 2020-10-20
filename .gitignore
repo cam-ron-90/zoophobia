@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/zoophobia-frontend
 /.pnp
 .pnp.js
 
