@@ -11,7 +11,6 @@ const io = socketio(expressServer);
 const Game = require('./Models/Game');
 
 const promptCards = require('./promptCards');
-
 const responseCards = require('./responseCards');
 
 mongoose.connect(
@@ -86,10 +85,13 @@ io.on('connect', (socket) => {
         isPartyLeader: true,
         nickName,
       };
+      console.log(player);
       game.players.push(player);
       game = await game.save();
+
       const gameID = game._id.toString();
       socket.join(gameID);
+      console.log(game);
       io.to(gameID).emit('updateGame', game);
     } catch (err) {
       console.log(err);
