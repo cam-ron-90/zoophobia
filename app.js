@@ -67,7 +67,7 @@ io.on('connect', (socket) => {
         };
         game.players.push(player);
         game = await game.save();
-        io.to(gameID).emit('updateGame', game);
+        io.to(gameID).emit('update-game', game);
       }
     } catch (err) {
       console.log(err);
@@ -92,7 +92,7 @@ io.on('connect', (socket) => {
       const gameID = game._id.toString();
       socket.join(gameID);
       console.log(game);
-      io.to(gameID).emit('updateGame', game);
+      io.to(gameID).emit('update-game', game);
     } catch (err) {
       console.log(err);
     }
