@@ -53,7 +53,20 @@ io.on('connect', (socket) => {
     }
   });
 
-  socket.on('deal-cards', async ({ gameID: _id }) => {});
+  socket.on('deal-cards', async ({ gameID: _id }) => {
+    try {
+      let game = await Game.findById(_id);
+      if (game.isOpen) {
+        const gameID = game._id.toString();
+        let cards = shuffleArray(responseCards);
+        dealCards(card, game.players);
+        game = await game.save();
+        io.to(gameID).emit('update-game', game);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  });
 
   socket.on('join-game', async ({ gameID: _id, nickName }) => {
     try {
@@ -88,6 +101,8 @@ io.on('connect', (socket) => {
       console.log(player);
       game.players.push(player);
       game = await game.save();
+
+      console.log(game);
 
       const gameID = game._id.toString();
       socket.join(gameID);
