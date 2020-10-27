@@ -105,7 +105,6 @@ io.on('connect', (socket) => {
   });
 
   //
-  socket.on('deal-cards-to-player', () => {});
 });
 
 const startGame = async (gameID) => {
