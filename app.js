@@ -98,15 +98,15 @@ io.on('connect', (socket) => {
         isPartyLeader: true,
         nickName,
       };
-      console.log(player);
+      // console.log(player);
       game.players.push(player);
       game = await game.save();
 
-      console.log(game);
+      // console.log(game);
 
       const gameID = game._id.toString();
       socket.join(gameID);
-      console.log(game);
+      // console.log(game);
       io.to(gameID).emit('update-game', game);
     } catch (err) {
       console.log(err);
@@ -123,10 +123,26 @@ io.on('connect', (socket) => {
 });
 
 const startGame = async (gameID) => {
-  let game = await Game.findById(gameID);
-  game.startTime = new Date().getTime();
-  game = await game.save();
-  console.log('game started:', game);
+  // let game = await Game.findById(gameID);
+  // game.startTime = new Date().getTime();
+  // game = await game.save();
+  // console.log('game started:', game);
+  try {
+    let game = await Game.findById(gameID);
+    if (!game.isOpen) {
+      // const gameID = game._id.toString();
+      let cards = shuffleArray(responseCards);
+      console.log(cards);
+      dealCards(cards, game.players);
+      game = await game.save();
+      io.to(gameID).emit('update-game', game);
+      console.log('game started NOW:');
+      console.log(game.players);
+      console.log(JSON.stringify(game.players[0].responseCards[0]));
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const shuffleArray = (arr) =>
