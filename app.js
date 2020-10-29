@@ -12,6 +12,7 @@ const Game = require('./Models/Game');
 
 const promptCards = require('./promptCards');
 const responseCards = require('./responseCards');
+console.log(responseCards.length);
 
 mongoose.connect(
   'mongodb://localhost:27017/zoophobia',
@@ -132,7 +133,7 @@ const startGame = async (gameID) => {
     if (!game.isOpen) {
       // const gameID = game._id.toString();
       let cards = shuffleArray(responseCards);
-      console.log(cards);
+      // console.log(cards);
       dealCards(cards, game.players);
       game = await game.save();
       io.to(gameID).emit('update-game', game);
