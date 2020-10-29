@@ -14,6 +14,14 @@ const promptCards = require('./promptCards');
 const responseCards = require('./responseCards');
 console.log(responseCards.length);
 
+// mongoose.connect(
+//   'mongodb+srv://cam-r**:**@cluster0.rtujv.mongodb.net/zoophobia?retryWrites=true&w=majority',
+//   { useNewUrlParser: true, useUnifiedTopology: true },
+//   () => {
+//     console.log('successfully connected to database');
+//   }
+// );
+
 mongoose.connect(
   'mongodb://localhost:27017/zoophobia',
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -103,7 +111,7 @@ io.on('connect', (socket) => {
       game.players.push(player);
       game = await game.save();
 
-      // console.log(game);
+      console.log(game.promptCards);
 
       const gameID = game._id.toString();
       socket.join(gameID);
