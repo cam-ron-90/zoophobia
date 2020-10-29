@@ -1,120 +1,72 @@
 const promptCards = [
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "Yuck, you black cats should stay at home! You’ll give all the animals bad luck!",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "Do you kookaburras ever stop laughing? I wish MY life was one big joke...",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "An echidna sees a Tasmanian devil wearing echidna quill earrings and is upset! Echidnas need quills to protect themselves...",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "You! Clean up the catnip spill in Aisle 4! Here’s a reminder, we both know goldfish have terrible memories.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "A chick shopping with their siblings and Mama Hen sees a fox with a ‘Don’t Be A Chicken’ t-shirt.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "Check this out! Is it a cat? Is it a fish? What even are you dude?! Teenage tom cats see a catfish and race up the aisle. They bully her, filming it on Instapaw Live for their followers to watch.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "The echidna security guard is following a family of ants around the Mega Mart and looking at them suspiciously. The ants are anxious and confused - they aren’t doing anything wrong.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "Oi get out of the way! Why don’t you go back to the Pacific Ocean while you’re at it! A chihuahua in a hurry pushes their trolley towards an octopus, who is scared and becomes camouflaged. The octopus gets tangled up in the trolley.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "Will a kiss turn you into the horse of my dreams? A horse security guard whose favourite fairytale is ‘The Frog Prince’ tries to kiss a cane toad entering the Mega Mart.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "All elephants have to enter the Mega Mart from the warehouse loading dock at the back of the store. This is a danger hazard for them, and also makes them feel bad for being treated differently.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "There is a native animals’ Acknowledgement sign outside the Mega Mart which welcomes all animals. Underneath, the Mega Mart manager has put up signs banning animals he doesn’t like from entering the store.",
     item: 'apple',
     frontImg: '',
     backImg: ''
   },
   {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
-    item: 'apple',
-    frontImg: '',
-    backImg: ''
-  },
-  {
-    text: "You're a black cat. A hippo sees you from the end of biscuit aisle. They say 'yuck, bad luck!' and starts walking the other way.",
+    text: "“No way, your honey is a bestseller at the Mega Mart! Get out of here...Run back to your Queen! A bee community get inspired by the chickens and echidnas who have reclaimed theirs eggs from the store. The bees ask the Mega Mart store owner if they can take their honey off the shelves and sell it themselves.",
     item: 'apple',
     frontImg: '',
     backImg: ''
