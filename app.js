@@ -123,7 +123,7 @@ io.on('connect', (socket) => {
   });
 
   // Chat Function
-  socket.emit('your id', socket.id);
+  // socket.emit('your id', socket.id);
   socket.on('send message', (body) => {
     io.emit('message', body);
   });
