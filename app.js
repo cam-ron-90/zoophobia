@@ -132,7 +132,9 @@ io.on('connect', (socket) => {
     'card-chosen-by-player',
     async ({ card, playerData: { player, gameID } }) => {
       let game = await Game.findById(gameID);
-      game.playersResponseCards.push(card);
+
+      // game.playersResponseCards.playersName = player.nickName;
+      game.playersResponseCards[player.nickName] = card;
 
       game = await game.save();
       console.log(game.playersResponseCards);
