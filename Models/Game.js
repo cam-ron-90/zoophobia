@@ -13,6 +13,7 @@ const PlayerSchema = new mongoose.Schema({
 
 const GameSchema = new mongoose.Schema({
   promptCards: { type: Array },
+  playersResponseCards: {},
   isOpen: { type: Boolean, default: true },
   isOver: { type: Boolean, default: false },
   players: [PlayerSchema],
