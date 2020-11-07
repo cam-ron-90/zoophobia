@@ -43,7 +43,7 @@ mongoose.connect(
 io.on('connect', (socket) => {
   // Timer and prepare to start game if player is Party leader
   socket.on('timer', async ({ gameID, playerID }) => {
-    let countDown = 5;
+    let countDown = 3;
     let game = await Game.findById(gameID);
     let player = game.players.id(playerID);
     if (player.isPartyLeader) {
@@ -132,8 +132,15 @@ io.on('connect', (socket) => {
     'card-chosen-by-player',
     async ({ card, playerData: { player, gameID } }) => {
       let game = await Game.findById(gameID);
-      player.currentChosenCard.push(card)
-      console.log(player.currentChosenCard);
+      let currentPlayer = game.players.id(player._id);
+
+      if (currentPlayer.currentChosenCard.length === 0) {
+        currentPlayer.currentChosenCard.push(card);
+      } else {
+        currentPlayer.currentChosenCard.push(card);
+        currentPlayer.currentChosenCard.shift();
+      }
+      console.log(currentPlayer.currentChosenCard);
       game = await game.save();
       io.to(gameID).emit('update-game', game);
     }
