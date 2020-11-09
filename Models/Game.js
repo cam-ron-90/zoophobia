@@ -14,6 +14,7 @@ const PlayerSchema = new mongoose.Schema({
 
 const GameSchema = new mongoose.Schema({
   promptCards: { type: Array },
+  isRoundFinished: { type: Boolean, default: false },
   isOpen: { type: Boolean, default: true },
   isOver: { type: Boolean, default: false },
   players: [PlayerSchema],
