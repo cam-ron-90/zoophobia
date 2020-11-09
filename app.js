@@ -146,6 +146,31 @@ io.on('connect', (socket) => {
     }
   );
 
+  socket.on(
+    'final-chosen-card',
+    // ??????????????????????????????????????? //
+    async ({ card, playerData: { player, gameID } }) => {
+    // ??????????????????????????????????????? //
+      let game = await Game.findById(gameID);
+      let player = game.players.id(player._id);
+
+      if (player.currentChosenCard.[0].item === card.item) {
+        player.winningCards.push([card, player.currentChosenCard.[0]);
+        player.currentChosenCard.shift();
+        game.promptCards.shift();
+        player.points += 1
+      } else {
+        player.unmatchCards.push([card, player.currentChosenCard.[0]);
+        player.currentChosenCard.shift();
+        game.promptCards.shift();
+      }
+      console.log(player.currentChosenCard);
+      game.isRoundFinished = true;
+      game = await game.save();
+      io.to(gameID).emit('update-game', game);
+    }
+  );
+
   //
 });
 
