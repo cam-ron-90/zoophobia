@@ -155,12 +155,12 @@ io.on('connect', (socket) => {
       let currentPlayer = game.players.id(player._id);
 
       if (currentPlayer.currentChosenCard[0].item === card.item) {
-        currentPlayer.winningCards.push([card, currentPlayer.currentChosenCard.[0]);
+        currentPlayer.winningCards.push([card, currentPlayer.currentChosenCard.[0]]);
         currentPlayer.currentChosenCard.shift();
         game.promptCards.shift();
         player.points += 1
       } else {
-        currentPlayer.unmatchCards.push([card, currentPlayer.currentChosenCard.[0]);
+        currentPlayer.unmatchCards.push([card, currentPlayer.currentChosenCard.[0]]);
         currentPlayer.currentChosenCard.shift();
         game.promptCards.shift();
       }
