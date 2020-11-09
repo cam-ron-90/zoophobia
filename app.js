@@ -152,19 +152,19 @@ io.on('connect', (socket) => {
     async ({ card, playerData: { player, gameID } }) => {
     // ??????????????????????????????????????? //
       let game = await Game.findById(gameID);
-      let player = game.players.id(player._id);
+      let currentPlayer = game.players.id(player._id);
 
-      if (player.currentChosenCard.[0].item === card.item) {
-        player.winningCards.push([card, player.currentChosenCard.[0]);
-        player.currentChosenCard.shift();
+      if (currentPlayer.currentChosenCard[0].item === card.item) {
+        currentPlayer.winningCards.push([card, currentPlayer.currentChosenCard.[0]);
+        currentPlayer.currentChosenCard.shift();
         game.promptCards.shift();
         player.points += 1
       } else {
-        player.unmatchCards.push([card, player.currentChosenCard.[0]);
-        player.currentChosenCard.shift();
+        currentPlayer.unmatchCards.push([card, currentPlayer.currentChosenCard.[0]);
+        currentPlayer.currentChosenCard.shift();
         game.promptCards.shift();
       }
-      console.log(player.currentChosenCard);
+      console.log(currentPlayer.currentChosenCard);
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
