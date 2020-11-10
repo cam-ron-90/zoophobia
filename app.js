@@ -150,19 +150,19 @@ io.on('connect', (socket) => {
     'final-chosen-card',
     async ({ card, playerData: { player, gameID } }) => {
       let game = await Game.findById(gameID);
-      let currentPlayer = game.players.id(player._id);
+      let chosenPlayer = game.players.id(card.playerID);
 
-      if (currentPlayer.currentChosenCard[0].item === card.item) {
-        currentPlayer.winningCards.push([card, currentPlayer.currentChosenCard.[0]]);
-        currentPlayer.currentChosenCard.shift();
+      if (game.promptCards[0].item === card.item) {
+        chosenPlayer.winningCards.push([card, game.promptCards[0]);
+        chosenPlayer.currentChosenCard.shift();
         game.promptCards.shift();
         player.points += 1
       } else {
-        currentPlayer.unmatchCards.push([card, currentPlayer.currentChosenCard.[0]]);
-        currentPlayer.currentChosenCard.shift();
+        chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
+        chosenPlayer.currentChosenCard.shift();
         game.promptCards.shift();
       }
-      console.log(currentPlayer.currentChosenCard);
+      console.log(chosenPlayer.currentChosenCard);
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
@@ -203,8 +203,9 @@ const shuffleArray = (arr) =>
 
 const dealCards = (cards, players) => {
   if (cards.length > 0) {
-    players.forEach((player) => {
+    players.forEach((player, index) => {
       if (cards.length > 0) {
+        cards[0].playerID = player._id
         player.responseCards.push(cards[0]);
         cards.shift();
       }
