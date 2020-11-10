@@ -169,6 +169,29 @@ io.on('connect', (socket) => {
     }
   );
 
+  socket.on(
+    'new-round',
+    async ({ card, playerData: { player, gameID } }) => {
+      let game = await Game.findById(gameID);
+      let currentPlayer = game.players.id(card.player._id);
+
+      game.isRoundFinished = false;
+
+      // if (game.promptCards[0].item === card.item) {
+      //   chosenPlayer.winningCards.push([card, game.promptCards[0]);
+      //   chosenPlayer.currentChosenCard.shift();
+      //   game.promptCards.shift();
+      //   player.points += 1
+      // } else {
+      //   chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
+      //   chosenPlayer.currentChosenCard.shift();
+      //   game.promptCards.shift();
+      // }
+      game = await game.save();
+      io.to(gameID).emit('update-game', game);
+    }
+  );
+
   //
 });
 
