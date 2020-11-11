@@ -30,15 +30,7 @@ mongoose.connect(
   }
 );
 
-// ------ PROMPT CARDS -------
-// 1. create array of prompt cards for server
-// 2. shuffle array and push to Game.cards
-// 3. each turn you take the last card from Game.cards to display
-// 4. winning response player takes prompt card from Game.cards to Player.cards
-// 5. if any values match they get a point
-
-// ------- QUESTIONS ---------
-// 1. Should cards Object carry graphics for the card or is that keft to front end?
+// ----------------------------------------------------------- //
 
 io.on('connect', (socket) => {
   // Timer and prepare to start game if player is Party leader
@@ -53,6 +45,7 @@ io.on('connect', (socket) => {
           countDown--;
         } else {
           game.isOpen = false;
+          player.isCurrentPlayer = true;
           game = await game.save();
           io.to(gameID).emit('updateGame', game);
           startGame(gameID);
@@ -171,22 +164,26 @@ io.on('connect', (socket) => {
 
   socket.on(
     'new-round',
-    async ({ card, playerData: { player, gameID } }) => {
+    async ({ playerData: { player, gameID } }) => {
       let game = await Game.findById(gameID);
       let currentPlayer = game.players.id(card.player._id);
 
       game.isRoundFinished = false;
 
-      // if (game.promptCards[0].item === card.item) {
-      //   chosenPlayer.winningCards.push([card, game.promptCards[0]);
-      //   chosenPlayer.currentChosenCard.shift();
-      //   game.promptCards.shift();
-      //   player.points += 1
-      // } else {
-      //   chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
-      //   chosenPlayer.currentChosenCard.shift();
-      //   game.promptCards.shift();
-      // }
+      let players = game.players
+      let pos = game.players.indexOf(currentPlayer)
+
+      if (game.promptCards.length > 0) {
+        currentPlayer.isCurrentPlayer = false;
+        if ((pos + 1) < players.length) {
+          players[pos +1].isCurrentPlayer = true;
+        } else {
+          players[0].isCurrentPlayer = true;
+        }
+      } else {
+        game.isOver = true;
+      }
+
       game = await game.save();
       io.to(gameID).emit('update-game', game);
     }
