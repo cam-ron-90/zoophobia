@@ -55,21 +55,6 @@ io.on('connect', (socket) => {
     }
   });
 
-  // socket.on('deal-cards', async ({ gameID: _id }) => {
-  //   try {
-  //     let game = await Game.findById(_id);
-  //     if (game.isOpen) {
-  //       const gameID = game._id.toString();
-  //       let cards = shuffleArray(responseCards);
-  //       dealCards(card, game.players);
-  //       game = await game.save();
-  //       io.to(gameID).emit('update-game', game);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // });
-
   socket.on('join-game', async ({ gameID: _id, nickName }) => {
     try {
       let game = await Game.findById(_id);
@@ -113,12 +98,6 @@ io.on('connect', (socket) => {
     } catch (err) {
       console.log(err);
     }
-  });
-
-  // Chat Function
-  // socket.emit('your id', socket.id);
-  socket.on('send message', (body) => {
-    io.emit('message', body);
   });
 
   socket.on(
@@ -186,7 +165,11 @@ io.on('connect', (socket) => {
     io.to(gameID).emit('update-game', game);
   });
 
-  //
+  // Chat Function
+  // socket.emit('your id', socket.id);
+  socket.on('send message', (body) => {
+    io.emit('message', body);
+  });
 });
 
 const startGame = async (gameID) => {
