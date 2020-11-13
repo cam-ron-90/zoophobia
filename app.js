@@ -146,10 +146,10 @@ io.on('connect', (socket) => {
       let chosenPlayer = game.players.id(card.playerID);
 
       if (game.promptCards[0].item === card.item) {
-        chosenPlayer.winningCards.push([card, game.promptCards[0]);
+        chosenPlayer.winningCards.push([card, game.promptCards[0]]);
         chosenPlayer.currentChosenCard.shift();
         game.promptCards.shift();
-        player.points += 1
+        player.points += 1;
       } else {
         chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
         chosenPlayer.currentChosenCard.shift();
@@ -162,32 +162,29 @@ io.on('connect', (socket) => {
     }
   );
 
-  socket.on(
-    'new-round',
-    async ({ playerData: { player, gameID } }) => {
-      let game = await Game.findById(gameID);
-      let currentPlayer = game.players.id(card.player._id);
+  socket.on('new-round', async ({ playerData: { player, gameID } }) => {
+    let game = await Game.findById(gameID);
+    let currentPlayer = game.players.id(card.player._id);
 
-      game.isRoundFinished = false;
+    game.isRoundFinished = false;
 
-      let players = game.players
-      let pos = game.players.indexOf(currentPlayer)
+    let players = game.players;
+    let pos = game.players.indexOf(currentPlayer);
 
-      if (game.promptCards.length > 0) {
-        currentPlayer.isCurrentPlayer = false;
-        if ((pos + 1) < players.length) {
-          players[pos +1].isCurrentPlayer = true;
-        } else {
-          players[0].isCurrentPlayer = true;
-        }
+    if (game.promptCards.length > 0) {
+      currentPlayer.isCurrentPlayer = false;
+      if (pos + 1 < players.length) {
+        players[pos + 1].isCurrentPlayer = true;
       } else {
-        game.isOver = true;
+        players[0].isCurrentPlayer = true;
       }
-
-      game = await game.save();
-      io.to(gameID).emit('update-game', game);
+    } else {
+      game.isOver = true;
     }
-  );
+
+    game = await game.save();
+    io.to(gameID).emit('update-game', game);
+  });
 
   //
 });
@@ -225,7 +222,7 @@ const dealCards = (cards, players) => {
   if (cards.length > 0) {
     players.forEach((player, index) => {
       if (cards.length > 0) {
-        cards[0].playerID = player._id
+        cards[0].playerID = player._id;
         player.responseCards.push(cards[0]);
         cards.shift();
       }
