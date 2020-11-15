@@ -89,7 +89,7 @@ io.on('connect', (socket) => {
       game.players.push(player);
       game = await game.save();
 
-      console.log(game.promptCards);
+      // console.log(game.promptCards);
 
       const gameID = game._id.toString();
       socket.join(gameID);
@@ -112,7 +112,7 @@ io.on('connect', (socket) => {
         currentPlayer.currentChosenCard.push(card);
         currentPlayer.currentChosenCard.shift();
       }
-      console.log(currentPlayer.currentChosenCard);
+      // console.log(currentPlayer.currentChosenCard);
       game = await game.save();
       io.to(gameID).emit('update-game', game);
     }
@@ -126,15 +126,17 @@ io.on('connect', (socket) => {
 
       if (game.promptCards[0].item === card.item) {
         chosenPlayer.winningCards.push([card, game.promptCards[0]]);
-        chosenPlayer.currentChosenCard.shift();
-        game.promptCards.shift();
-        player.points += 1;
+        cleanChosenCards(game.players);
+        // chosenPlayer.currentChosenCard.shift();
+        // game.promptCards.shift();
+        chosenPlayer.points += 1;
       } else {
         chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
-        chosenPlayer.currentChosenCard.shift();
-        game.promptCards.shift();
+        cleanChosenCards(game.players);
+        // chosenPlayer.currentChosenCard.shift();
+        // game.promptCards.shift();
       }
-      console.log(chosenPlayer.currentChosenCard);
+      // console.log(chosenPlayer.winningCards + 'OR' + chosenPlayer.unmatchCards);
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
@@ -143,9 +145,10 @@ io.on('connect', (socket) => {
 
   socket.on('new-round', async ({ playerData: { player, gameID } }) => {
     let game = await Game.findById(gameID);
-    let currentPlayer = game.players.id(card.player._id);
+    let currentPlayer = game.players.id(player._id);
 
     game.isRoundFinished = false;
+    game.promptCards.shift();
 
     let players = game.players;
     let pos = game.players.indexOf(currentPlayer);
@@ -212,4 +215,10 @@ const dealCards = (cards, players) => {
     });
     dealCards(cards, players);
   }
+};
+
+const cleanChosenCards = (players) => {
+  players.forEach((player) => {
+    player.currentChosenCard.shift();
+  });
 };
