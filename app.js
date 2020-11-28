@@ -89,8 +89,6 @@ io.on('connect', (socket) => {
       game.players.push(player);
       game = await game.save();
 
-      // console.log(game.promptCards);
-
       const gameID = game._id.toString();
       socket.join(gameID);
       // console.log(game);
@@ -127,16 +125,12 @@ io.on('connect', (socket) => {
       if (game.promptCards[0].item === card.item) {
         chosenPlayer.winningCards.push([card, game.promptCards[0]]);
         cleanChosenCards(game.players);
-        // chosenPlayer.currentChosenCard.shift();
-        // game.promptCards.shift();
+
         chosenPlayer.points += 1;
       } else {
         chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
         cleanChosenCards(game.players);
-        // chosenPlayer.currentChosenCard.shift();
-        // game.promptCards.shift();
       }
-      // console.log(chosenPlayer.winningCards + 'OR' + chosenPlayer.unmatchCards);
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
@@ -176,22 +170,15 @@ io.on('connect', (socket) => {
 });
 
 const startGame = async (gameID) => {
-  // let game = await Game.findById(gameID);
   // game.startTime = new Date().getTime();
-  // game = await game.save();
-  // console.log('game started:', game);
   try {
     let game = await Game.findById(gameID);
     if (!game.isOpen) {
-      // const gameID = game._id.toString();
       let cards = shuffleArray(responseCards);
-      // console.log(cards);
       dealCards(cards, game.players);
       game = await game.save();
       io.to(gameID).emit('update-game', game);
       console.log('game started NOW:');
-      // console.log(game.players);
-      // console.log(JSON.stringify(game.players[0].responseCards[0]));
     }
   } catch (err) {
     console.log(err);
