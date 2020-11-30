@@ -121,6 +121,7 @@ io.on('connect', (socket) => {
     async ({ card, playerData: { player, gameID } }) => {
       let game = await Game.findById(gameID);
       let chosenPlayer = game.players.id(card.playerID);
+      const promptCard = promptCards[0];
 
       if (game.promptCards[0].item === card.item) {
         chosenPlayer.winningCards.push([card, game.promptCards[0]]);
@@ -131,6 +132,7 @@ io.on('connect', (socket) => {
         chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
         cleanChosenCards(game.players);
       }
+      io.to(gameID).emit('cards-pair', { nickName: chosenPlayer.nickName, card, promptCard)};
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
