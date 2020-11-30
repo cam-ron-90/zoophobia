@@ -3,7 +3,7 @@ const app = express();
 const socketio = require('socket.io');
 const mongoose = require('mongoose');
 
-const PORT = process.env. || 3001
+const PORT = process.env.PORT || 3001
 
 const expressServer = app.listen(PORT, () =>
   console.log('server is running on port 3001')
