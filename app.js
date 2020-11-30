@@ -134,7 +134,7 @@ io.on('connect', (socket) => {
         chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
         cleanChosenCards(game.players);
       }
-      io.to(gameID).emit('cards-pair', { nickName: chosenPlayer.nickName, card, promptCard)};
+      io.to(gameID).emit('cards-pair', { nickName: chosenPlayer.nickName, card, promptCard});
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
