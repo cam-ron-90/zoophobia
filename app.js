@@ -93,7 +93,6 @@ io.on('connect', (socket) => {
 
       const gameID = game._id.toString();
       socket.join(gameID);
-      // console.log(game);
       io.to(gameID).emit('update-game', game);
     } catch (err) {
       console.log(err);
@@ -112,7 +111,6 @@ io.on('connect', (socket) => {
         currentPlayer.currentChosenCard.push(card);
         currentPlayer.currentChosenCard.shift();
       }
-      // console.log(currentPlayer.currentChosenCard);
       game = await game.save();
       io.to(gameID).emit('update-game', game);
     }
@@ -123,7 +121,6 @@ io.on('connect', (socket) => {
     async ({ card, playerData: { player, gameID } }) => {
       let game = await Game.findById(gameID);
       let chosenPlayer = game.players.id(card.playerID);
-      // promptCard = game.promptCards[0];
 
       if (game.promptCards[0].item === card.item) {
         chosenPlayer.winningCards.push([card, game.promptCards[0]]);
@@ -134,27 +131,25 @@ io.on('connect', (socket) => {
         chosenPlayer.unmatchCards.push([card, game.promptCards[0]]);
         cleanChosenCards(game.players);
       }
-      io.to(gameID).emit('cards-pair', {
-        nickName: chosenPlayer.nickName,
-        card,
-        promptCard: game.promptCards[0],
-      });
+
+      game.animationMatchingCards = [
+        chosenPlayer.nickName,
+        card.backImg,
+        game.promptCards[0].backImg,
+      ];
+      game.animationMatching = true;
       game.isRoundFinished = true;
       game = await game.save();
       io.to(gameID).emit('update-game', game);
     }
   );
 
-  // socket.on('remove-matching-screen', async (gameID) => {
-  //   io.to(gameID).emit('animation-false');
-  // });
-
   socket.on('new-round', async ({ playerData: { player, gameID } }) => {
-    io.to(gameID).emit('animation-false');
-
     let game = await Game.findById(gameID);
     let currentPlayer = game.players.id(player._id);
 
+    game.animationMatching = false;
+    cleanArray(game.animationMatchingCards);
     game.isRoundFinished = false;
     game.promptCards.shift();
 
@@ -222,4 +217,8 @@ const cleanChosenCards = (players) => {
   players.forEach((player) => {
     player.currentChosenCard.shift();
   });
+};
+
+const cleanArray = (A) => {
+  A.length = 0;
 };
