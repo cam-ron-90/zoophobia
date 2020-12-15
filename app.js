@@ -60,7 +60,7 @@ io.on('connect', (socket) => {
   socket.on('join-game', async ({ gameID: _id, nickName }) => {
     try {
       let game = await Game.findById(_id);
-      if (game.isOpen) {
+      if (game.isOpen && game.players.length <= 6) {
         const gameID = game._id.toString();
         socket.join(gameID);
         let player = {
