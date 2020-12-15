@@ -124,6 +124,8 @@ io.on('connect', (socket) => {
 
       if (game.promptCards[0].item === card.item) {
         chosenPlayer.winningCards.push([card, game.promptCards[0]]);
+        let pos = chosenPlayer.responseCards.indexOf(card);
+        chosenPlayer.responseCards.splice(pos, 1);
         cleanChosenCards(game.players);
 
         chosenPlayer.points += 1;
